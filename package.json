@@ -51,8 +51,10 @@
     }
   },
   "dependencies": {
+    "timer.js": "^1.0.4",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
+    "vue-pomodoro": "^1.0.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "vuex-electron": "^1.0.0"
