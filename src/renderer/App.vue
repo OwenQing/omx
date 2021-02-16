@@ -5,14 +5,14 @@
       <v-navigation-drawer app>
         <ul>
           <li><router-link to="/tomatotime">番茄钟</router-link></li>
-          <li><a href="#news">日程计划</a></li>
-          <li><a href="#contact">代办事项</a></li>
-          <li><a href="#about">目标管理</a></li>
+          <li><router-link to="/todo">代办事项</router-link></li>
+          <li><router-link to="/calendar">日程计划</router-link></li>
+          <li><router-link to="/objectmanagement">目标管理</router-link></li>
         </ul>
       </v-navigation-drawer>
 
+      <!-- 主区域 -->
       <v-main>
-        <!--  -->
         <router-view></router-view>
       </v-main>
     </v-app>
@@ -22,12 +22,9 @@
 <script>
 export default {
   name: "omx",
-  data: () => ({
-  
-  }),
+  data: () => ({}),
 
-  methods: {
-  },
+  methods: {},
 };
 </script>
 
@@ -54,23 +51,24 @@ export default {
 
 /* 侧边栏 */
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    /* width: 200px; */
-    background-color: #f1f1f1;
+  list-style-type: none;
+  margin: 0;
+  /* padding: 0; */
+  padding-left: 0 !important;
+  /* width: 200px; */
+  background-color: #f1f1f1;
 }
- 
+
 li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    text-decoration: none;
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
 }
- 
+
 /* 鼠标移动到选项上修改背景颜色 */
 li a:hover {
-    background-color: #555;
-    color: white;
+  background-color: #555;
+  color: white;
 }
 </style>
