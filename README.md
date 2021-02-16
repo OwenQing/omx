@@ -1,0 +1,2 @@
+# omx
+object management
