@@ -1,5 +1,12 @@
 const fs = require('fs')
 
+
+/**
+ *  定义数据存储 Model 
+ *  Model 类似于 ORM BaseModel 
+ *  由于本项目数据量比较小，所以采用直接将 json 存文件的方式
+ * 
+ **/
 class Model {
     constructor() {}
 
@@ -23,9 +30,13 @@ class Model {
     *   检测文件是否存在，不存在就创建
     */
     checkFile(path) {
+        // 数据目录
+        if (!fs.existsSync('D:/omxlog')) {
+            fs.mkdirSync('D:/omxlog')
+        }
+
         let status = fs.existsSync(this.getPath())
         if (!status) {
-            // let data = '[]'
             fs.writeFileSync(this.getPath(), JSON.stringify([]))
         }
     }
@@ -143,3 +154,12 @@ class Model {
 //         this.passwd = passwd
 //     }
 // }
+
+// u = new User()
+// // fs.mkdirSync('D:/omxlog')
+// u.save()
+// // u.checkFile()
+
+module.exports = {
+    Model: Model
+}

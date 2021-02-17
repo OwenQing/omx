@@ -45,7 +45,7 @@ export default {
 /*定义滑块 内阴影*/
 ::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-  background-color: #1890ff;
+  background-color: #969a9e;
   border-radius: 10px;
 }
 

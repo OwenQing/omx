@@ -1,5 +1,4 @@
 <template>
-  <div>
-    <h1>Tomato</h1>
-  </div>
+  <Card title="番茄钟" icon="md-clock">
+  </Card>
 </template>

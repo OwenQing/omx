@@ -51,6 +51,7 @@
     }
   },
   "dependencies": {
+    "iview": "^3.5.4",
     "timer.js": "^1.0.4",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",

@@ -20,7 +20,7 @@ const winURL = process.env.NODE_ENV === 'development'
 
 function createWindow () {
   // 隐藏菜单
-  // Menu.setApplicationMenu(null)
+  Menu.setApplicationMenu(null)
 
   /**
    * Initial window options
