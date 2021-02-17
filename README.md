@@ -1,5 +1,5 @@
 # omx
-object management
+目标管理
 
 ## 1. 初步设计
 开发如下功能
