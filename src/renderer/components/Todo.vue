@@ -3,8 +3,7 @@
     <!-- 操作 -->
     <div>
       <Button @click="openDrawer">新增</Button>
-      <Button>待完成</Button>
-      <Button>全部</Button>
+      <i-switch v-model="isShowAllTodo" @on-change="showTodoHandler()" style="margin-left: 5px" />
     </div>
 
     <!-- 待办新增 -->
@@ -35,9 +34,18 @@
     <!-- 待办内容 -->
     <div class="todo-content">
       <Table :columns="TodoCol" :data="TodoList" width="500px">
+        <template slot-scope="{row, index}" slot="priority">
+          <Tag :color="priorityColorHandler(row.priority)" type="border">{{ priorityContentHandler(row.priority) }}</Tag>
+        </template>
+
         <template slot-scope="{ row, index }" slot="action">
-          <Button type="success" size="small" icon="md-checkmark" ghost></Button>
-          <Button type="error" size="small" icon="md-close" style="margin-left: 5px" ghost></Button>
+          <Button size="small" icon="md-checkmark"></Button>
+          <Button
+            size="small"
+            icon="md-close"
+            style="margin-left: 5px"
+            @click="deleteTodo(row.id)"
+          ></Button>
         </template>
       </Table>
     </div>
@@ -45,20 +53,25 @@
 </template>
 
 <script>
+import Todo from "../omx/todo";
+
 export default {
   data: () => ({
     // 新增待办抽屉 开关状态
     drawerOpen: false,
 
+    // 是否显示全部 Todo (包含已完成的) 
+    isShowAllTodo: false,
+
     // 优先级数据
     priority: [
       {
         value: "3",
-        label: "普通",
+        label: "普通"
       },
       {
         value: "2",
-        label: "中等",
+        label: "中等"
       },
       {
         value: "1",
@@ -78,7 +91,8 @@ export default {
       },
       {
         title: "优先级",
-        key: "priority",
+        slot: "priority",
+        width: 100,
         align: "center"
       },
       {
@@ -89,21 +103,18 @@ export default {
       }
     ],
     // 待办数据
-    TodoList: [
-      {
-        task: "吃饭",
-        priority: "高"
-      },
-      {
-        task: "睡觉",
-        priority: "高"
-      },
-      {
-        task: "打豆豆",
-        priority: "高"
-      }
-    ]
+    TodoList: []
   }),
+
+  mounted() {
+    this.queryAllTodoList();
+  },
+
+  watch: {
+    TodoList(val) {
+      this.TodoList = val;
+    }
+  },
 
   methods: {
     /* 新增待办抽屉控制 */
@@ -111,12 +122,73 @@ export default {
       this.drawerOpen = true;
     },
 
+    /* 显示全部 or 未完成部分 */
+    showTodoHandler(status) {
+      // FIXME
+      this.$Message.info('开关状态：' + status);
+    },
+
+    /* 优先级颜色处理 */
+    priorityColorHandler(priority) {
+      switch(priority) {
+        case "1":
+          return "error" // red
+        case "2":
+          return "success" // green
+        case "3":
+          return "primary" // blue
+      }
+    },
+
+    /* 优先级内容处理 */
+    priorityContentHandler(priority) {
+      switch(priority) {
+        case "1":
+          return "High" // red
+        case "2":
+          return "Middle" // green
+        case "3":
+          return "Low" // blue
+      }
+    },
+
     /* 新增待办 */
     addTodo() {
-      console.log(this.priorityValue)
-      console.log(this.todoTask)
+      let task = this.todoTask;
+      let priority = this.priorityValue;
+      try {
+        let todo = new Todo((task = task), (priority = priority));
+        console.log(todo);
+        todo.save();
+        this.$Message.success("新增成功");
+      } catch (e) {
+        this.$Message.error("存储失败,请排查原因...");
+      }
 
-      this.drawerOpen = false
+      // 关闭新增抽屉
+      this.drawerOpen = false;
+      this.todoTask = "";
+      // 刷新数据
+      this.queryAllTodoList();
+    },
+
+    /* 查询所有待办 */
+    queryAllTodoList() {
+      let query = new Todo();
+      let todos = query.all();
+      // this.TodoList = todos.sort((todo1, todo2) => {
+      //   todo2.id - todo1.id
+      // })
+      // console.log("排序 ==> ", todos);
+      this.TodoList = todos;
+    },
+
+    /* 删除待办 */
+    deleteTodo(id) {
+      let query = new Todo();
+      query.delete(id);
+      // 刷新数据
+      this.queryAllTodoList();
     }
   }
 };

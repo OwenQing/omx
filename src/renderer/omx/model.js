@@ -13,17 +13,14 @@ class Model {
     /* 读取文件内容 */
     __read(path) {
         const data = fs.readFileSync(path, 'utf-8')
+        // console.log('JSON ------>', JSON.parse(data))
         return JSON.parse(data)
     }
 
     /* 存储对象 */
     __write(path, data) {
         data = JSON.stringify(data, null, '\t')
-        fs.writeFile(path, data, err => {
-            if (err) {
-                console.log(`write file ${path} error`)
-            }
-        })
+        fs.writeFileSync(path, data)
     }
 
     /*
@@ -160,6 +157,8 @@ class Model {
 // u.save()
 // // u.checkFile()
 
-module.exports = {
-    Model: Model
-}
+// module.exports = {
+//     Model: Model
+// }
+
+export default Model

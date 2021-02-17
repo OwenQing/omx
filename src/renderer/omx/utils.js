@@ -24,6 +24,10 @@ function dateFormat(date, fmt='YYYY-mm-dd HH:MM:SS') {
     return fmt;
 }
 
-module.exports = {
-    dateFormat: dateFormat
+// module.exports = {
+//     dateFormat: dateFormat
+// }
+
+export {
+    dateFormat
 }

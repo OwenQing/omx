@@ -1,8 +1,11 @@
-const Model = require('./model.js').Model
-const dateFormat = require('./utils.js').dateFormat
+import Model from './model.js'
+import { dateFormat } from './utils.js'
+
+// const Model = require('./model.js').Model
+// const dateFormat = require('./utils.js').dateFormat
 
 class Todo extends Model {
-    constructor(task='', priority='') {
+    constructor(task='', priority=3) {
         super()
         // 手动设置
         this.task = task
@@ -14,7 +17,4 @@ class Todo extends Model {
     }
 }
 
-u = new Todo(task='todo test', priority='1')
-// u.save()
-// u.checkFile()
-console.log(u.all())
+export default Todo;
