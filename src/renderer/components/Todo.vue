@@ -158,7 +158,7 @@ export default {
       let priority = this.priorityValue;
       try {
         let todo = new Todo((task = task), (priority = priority));
-        console.log(todo);
+        // console.log(todo);
         todo.save();
         this.$Message.success("新增成功");
       } catch (e) {

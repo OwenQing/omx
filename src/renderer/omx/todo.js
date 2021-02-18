@@ -1,9 +1,13 @@
 import Model from './model.js'
 import { dateFormat } from './utils.js'
 
-// const Model = require('./model.js').Model
-// const dateFormat = require('./utils.js').dateFormat
 
+/**
+ *  Todo 待办事项存储类
+ *  @param task 待办任务
+ *  @param priority 三个优先级 3 2 1 (low middle high)
+ *  @param status bool 对应完成状态 
+*/
 class Todo extends Model {
     constructor(task='', priority=3) {
         super()
