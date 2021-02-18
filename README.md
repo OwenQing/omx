@@ -1,5 +1,5 @@
 # omx 
-目标管理。该项目还处于开发阶段，欢迎大家尝试
+目标管理。
 
 
 
@@ -30,6 +30,6 @@ npm run build
 
 ### 3.开发阶段图片展示
 
-![](D:\dev\omx\imgs\calendardemo.png) 
+![](./imgs/calendardemo.png) 
 
-![](D:\dev\omx\imgs\tododemo.png)
+![](./imgs/tododemo.png)
