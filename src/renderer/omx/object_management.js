@@ -5,6 +5,20 @@ import { dateFormat } from './utils.js'
 /**
  * ObjectManagement 目标管理相关存储类
  * 使用 OKR 的方式
+ * 	{
+		"object": "减脂",
+		"krs": [
+			{
+				"kr": "跑步",
+				"weight": 30,
+				"progress": 0
+			}
+		],
+		"log": "",
+		"startTime": "",
+		"endTime": null,
+		"id": 1
+	}
 */
 class ObjectManagement extends Model {
     constructor(object='', krs=[]) {

@@ -60,7 +60,7 @@ export default {
     // 新增待办抽屉 开关状态
     drawerOpen: false,
 
-    // 是否显示全部 Todo (包含已完成的) 
+    // 是否显示全部 Todo (包含已完成的)
     isShowAllTodo: false,
 
     // 优先级数据
@@ -125,30 +125,30 @@ export default {
     /* 显示全部 or 未完成部分 */
     showTodoHandler(status) {
       // FIXME
-      this.$Message.info('开关状态：' + status);
+      this.$Message.info("开关状态：" + status);
     },
 
     /* 优先级颜色处理 */
     priorityColorHandler(priority) {
-      switch(priority) {
+      switch (priority) {
         case "1":
-          return "error" // red
+          return "error"; // red
         case "2":
-          return "success" // green
+          return "success"; // green
         case "3":
-          return "primary" // blue
+          return "primary"; // blue
       }
     },
 
     /* 优先级内容处理 */
     priorityContentHandler(priority) {
-      switch(priority) {
+      switch (priority) {
         case "1":
-          return "High" // red
+          return "High"; // red
         case "2":
-          return "Middle" // green
+          return "Middle"; // green
         case "3":
-          return "Low" // blue
+          return "Low"; // blue
       }
     },
 

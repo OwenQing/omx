@@ -4,9 +4,7 @@
       <!-- 侧边栏 -->
       <v-navigation-drawer app>
         <ul>
-          <li><router-link to="/tomatotime">番茄钟</router-link></li>
           <li><router-link to="/todo">代办事项</router-link></li>
-          <li><router-link to="/calendar">日程计划</router-link></li>
           <li><router-link to="/objectmanagement">目标管理</router-link></li>
         </ul>
       </v-navigation-drawer>

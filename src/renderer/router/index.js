@@ -8,18 +8,7 @@ export default new Router({
     {
       path: '/',
       name: 'landing-page',
-      // component: require('@/components/LandingPage').default
-      component: () => import('@/components/TomatoTime.vue'),
-    },
-    {
-      path: '/tomatotime',
-      name: 'tomatotime',
-      component: () => import('@/components/TomatoTime.vue')
-    },
-    {
-      path: '/calendar',
-      name: 'calendar',
-      component: () => import('@/components/Calendar.vue')
+      component: () => import('@/components/Todo.vue'),
     },
     {
       path: '/todo',
